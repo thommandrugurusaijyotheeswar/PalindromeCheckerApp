@@ -1,84 +1,89 @@
-# UC5 – Stack-Based Palindrome Checker
+# UC6 – Queue + Stack Based Palindrome Check
 
 ## 📌 Objective
 
-The objective of this program is to check whether a given string is a **palindrome** using a **Stack data structure**.
+The objective of this program is to check whether a given string is a **palindrome** using both **Queue** and **Stack** data structures.
+This use case demonstrates the difference between **FIFO (First In First Out)** and **LIFO (Last In First Out)** behaviors.
 
 A **palindrome** is a word or sequence that reads the same forward and backward.
 
 Examples:
 
-* noon
-* madam
+* civic
 * level
-
-This use case demonstrates how a **stack naturally reverses elements using the LIFO principle**, making it useful for palindrome validation.
+* radar
 
 ---
 
 # 🧠 Key Concepts Used
 
-## 1. Stack
+## 1. Queue
+
+A **Queue** is a linear data structure that follows the **First In First Out (FIFO)** principle.
+
+Example:
+
+```
+Input: c i v i c
+
+Queue Order:
+Front → c → i → v → i → c
+```
+
+Operations used:
+
+* **enqueue (add)** → insert element into queue
+* **dequeue (remove)** → remove element from queue
+
+---
+
+## 2. Stack
 
 A **Stack** is a linear data structure that follows the **Last In First Out (LIFO)** principle.
 
 Example:
 
 ```
-Push: n → o → o → n
-Stack Top → n
+Stack Top
+   c
+   i
+   v
+   i
+   c
 ```
 
-When popping:
+Operations used:
 
-```
-Pop → n → o → o → n
-```
-
-The order becomes reversed.
+* **push()** → insert element
+* **pop()** → remove element
 
 ---
 
-## 2. Push Operation
+## 3. Stack vs Queue Comparison
 
-The **push()** method inserts elements into the stack.
+| Data Structure | Principle | Operation         |
+| -------------- | --------- | ----------------- |
+| Queue          | FIFO      | enqueue / dequeue |
+| Stack          | LIFO      | push / pop        |
 
-Example:
+In this program:
 
-```java
-stack.push(c);
-```
+* The **queue returns characters in original order**
+* The **stack returns characters in reverse order**
 
----
-
-## 3. Pop Operation
-
-The **pop()** method removes the top element from the stack.
-
-Example:
-
-```java
-stack.pop();
-```
-
----
-
-## 4. Reversal Logic
-
-Stacks reverse the order of elements automatically.
-This property helps compare the reversed sequence with the original string.
+Comparing both helps determine whether the string is a palindrome.
 
 ---
 
 # ⚙️ Program Flow
 
-1. Declare and initialize a string.
-2. Create a **Stack** to store characters.
-3. Push each character of the string into the stack.
-4. Pop characters from the stack.
-5. Compare popped characters with the original string.
-6. If all characters match, the string is a **Palindrome**.
-7. Display the result.
+1. Declare and initialize the input string.
+2. Create a **Queue** and **Stack**.
+3. Insert each character of the string into both structures.
+4. Dequeue from the queue and pop from the stack.
+5. Compare both characters.
+6. If all characters match → **Palindrome**
+7. Otherwise → **Not Palindrome**
 
 ---
 
@@ -89,31 +94,31 @@ This property helps compare the reversed sequence with the original string.
 Open **Command Prompt** and run:
 
 ```
-javac UseCase5PalindromeCheckerApp.java
+javac UseCase6PalindromeCheckerApp.java
 ```
 
 ### Step 2: Run the Program
 
 ```
-java UseCase5PalindromeCheckerApp
+java UseCase6PalindromeCheckerApp
 ```
 
 ---
 
 # ▶️ Example Output
 
-Example 1:
+Example:
 
 ```
-Input: noon
-Output: noon is a Palindrome.
+Input : civic
+Is Palindrome? : true
 ```
 
-Example 2:
+Example (Not Palindrome):
 
 ```
-Input: hello
-Output: hello is NOT a Palindrome.
+Input : hello
+Is Palindrome? : false
 ```
 
 ---
@@ -121,7 +126,7 @@ Output: hello is NOT a Palindrome.
 # 📂 File Structure
 
 ```
-UseCase5PalindromeCheckerApp.java
+UseCase6PalindromeCheckerApp.java
 README.md
 ```
 
@@ -131,11 +136,11 @@ README.md
 
 After completing this program, you will understand:
 
-* How **Stack Data Structure** works
-* The **LIFO principle**
-* How **push() and pop() operations** work
-* How stacks can be used to **reverse data**
-* Implementation of palindrome validation using **stack logic**
+* How **Queue (FIFO)** works
+* How **Stack (LIFO)** works
+* Difference between **queue and stack**
+* How data structures can be used to solve **palindrome problems**
+* Practical use of **enqueue, dequeue, push, and pop operations**
 
 ---
 
@@ -143,4 +148,4 @@ After completing this program, you will understand:
 
 Developer
 
-Version: 5.0
+Version: 6.0
