@@ -1,89 +1,82 @@
-# UC6 – Queue + Stack Based Palindrome Check
+# UC7 – Deque-Based Optimized Palindrome Checker
 
 ## 📌 Objective
 
-The objective of this program is to check whether a given string is a **palindrome** using both **Queue** and **Stack** data structures.
-This use case demonstrates the difference between **FIFO (First In First Out)** and **LIFO (Last In First Out)** behaviors.
+The objective of this program is to check whether a given string is a **palindrome** using a **Deque (Double Ended Queue)** data structure.
 
 A **palindrome** is a word or sequence that reads the same forward and backward.
 
 Examples:
 
-* civic
 * level
 * radar
+* civic
+
+This use case demonstrates how a **Deque allows insertion and deletion from both front and rear**, making palindrome comparison efficient.
 
 ---
 
 # 🧠 Key Concepts Used
 
-## 1. Queue
+## 1. Deque (Double Ended Queue)
 
-A **Queue** is a linear data structure that follows the **First In First Out (FIFO)** principle.
+A **Deque** is a linear data structure that allows insertion and deletion from **both ends**.
 
-Example:
+Operations supported:
 
-```
-Input: c i v i c
-
-Queue Order:
-Front → c → i → v → i → c
-```
-
-Operations used:
-
-* **enqueue (add)** → insert element into queue
-* **dequeue (remove)** → remove element from queue
-
----
-
-## 2. Stack
-
-A **Stack** is a linear data structure that follows the **Last In First Out (LIFO)** principle.
+* Insert at **front**
+* Insert at **rear**
+* Remove from **front**
+* Remove from **rear**
 
 Example:
 
 ```
-Stack Top
-   c
-   i
-   v
-   i
-   c
+Input: level
+
+Deque:
+Front → l → e → v → e → l ← Rear
 ```
-
-Operations used:
-
-* **push()** → insert element
-* **pop()** → remove element
 
 ---
 
-## 3. Stack vs Queue Comparison
+## 2. Front and Rear Access
 
-| Data Structure | Principle | Operation         |
-| -------------- | --------- | ----------------- |
-| Queue          | FIFO      | enqueue / dequeue |
-| Stack          | LIFO      | push / pop        |
+Deque allows direct access to:
 
-In this program:
+* **First element**
+* **Last element**
 
-* The **queue returns characters in original order**
-* The **stack returns characters in reverse order**
+These elements are compared to check palindrome condition.
 
-Comparing both helps determine whether the string is a palindrome.
+Example:
+
+```
+Compare:
+First = l
+Last  = l
+```
+
+---
+
+## 3. Optimized Data Handling
+
+Unlike stack-based approaches, **Deque eliminates the need for separate reversal data structures** because both ends can be accessed directly.
+
+This makes the algorithm **simpler and efficient**.
 
 ---
 
 # ⚙️ Program Flow
 
 1. Declare and initialize the input string.
-2. Create a **Queue** and **Stack**.
-3. Insert each character of the string into both structures.
-4. Dequeue from the queue and pop from the stack.
+2. Create a **Deque** to store characters.
+3. Insert all characters of the string into the deque.
+4. Remove the **first and last characters**.
 5. Compare both characters.
-6. If all characters match → **Palindrome**
-7. Otherwise → **Not Palindrome**
+6. If characters match, continue comparison.
+7. If characters do not match, the string is **not a palindrome**.
+8. Display the final result.
 
 ---
 
@@ -94,27 +87,27 @@ Comparing both helps determine whether the string is a palindrome.
 Open **Command Prompt** and run:
 
 ```
-javac UseCase6PalindromeCheckerApp.java
+javac UseCase7PalindromeCheckerApp.java
 ```
 
 ### Step 2: Run the Program
 
 ```
-java UseCase6PalindromeCheckerApp
+java UseCase7PalindromeCheckerApp
 ```
 
 ---
 
 # ▶️ Example Output
 
-Example:
+Example 1:
 
 ```
-Input : civic
+Input : level
 Is Palindrome? : true
 ```
 
-Example (Not Palindrome):
+Example 2:
 
 ```
 Input : hello
@@ -126,7 +119,7 @@ Is Palindrome? : false
 # 📂 File Structure
 
 ```
-UseCase6PalindromeCheckerApp.java
+UseCase7PalindromeCheckerApp.java
 README.md
 ```
 
@@ -136,11 +129,10 @@ README.md
 
 After completing this program, you will understand:
 
-* How **Queue (FIFO)** works
-* How **Stack (LIFO)** works
-* Difference between **queue and stack**
-* How data structures can be used to solve **palindrome problems**
-* Practical use of **enqueue, dequeue, push, and pop operations**
+* How **Deque (Double Ended Queue)** works
+* How to access **front and rear elements**
+* Efficient **palindrome validation**
+* How data structures optimize algorithm design
 
 ---
 
@@ -148,4 +140,4 @@ After completing this program, you will understand:
 
 Developer
 
-Version: 6.0
+Version: 7.0
