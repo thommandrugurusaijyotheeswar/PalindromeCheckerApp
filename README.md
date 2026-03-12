@@ -1,70 +1,101 @@
-# UC11 – Object-Oriented Palindrome Service
+# UC12 – Strategy Pattern for Palindrome Algorithms
 
 ## Objective
 
-The objective of this program is to check whether a string is a **palindrome using Object-Oriented Programming (OOP) principles**.
+The objective of this program is to implement palindrome validation using the **Strategy Design Pattern**, allowing different palindrome algorithms to be selected dynamically at runtime.
 
-The palindrome logic is encapsulated inside a **PalindromeChecker class**, improving modularity and code reuse.
+This improves **flexibility, maintainability, and scalability** of the application.
 
 ---
 
 # Key Concepts Used
 
-## 1. Encapsulation
+## 1. Interface
 
-Encapsulation means **wrapping data and methods inside a class**.
-
-In this program:
-
-```
-PalindromeChecker class
-```
-
-contains the palindrome checking logic inside the method:
-
-```
-checkPalindrome()
-```
-
----
-
-## 2. Single Responsibility Principle
-
-Each class should have **only one responsibility**.
-
-In this program:
-
-| Class                         | Responsibility         |
-| ----------------------------- | ---------------------- |
-| PalindromeChecker             | Check palindrome logic |
-| UseCase11PalindromeCheckerApp | Run the application    |
-
-This improves **code organization and maintainability**.
-
----
-
-## 3. Object Creation
-
-An object of the PalindromeChecker class is created in the main method.
+An **interface** defines a contract that multiple classes can implement.
 
 Example:
 
 ```
-PalindromeChecker checker = new PalindromeChecker();
+interface PalindromeStrategy
 ```
 
-The method is then called using the object.
+All palindrome algorithms implement this interface.
+
+---
+
+## 2. Polymorphism
+
+Polymorphism allows different classes to be treated as the same type.
+
+Example:
+
+```
+PalindromeStrategy strategy = new StackStrategy();
+```
+
+or
+
+```
+PalindromeStrategy strategy = new DequeStrategy();
+```
+
+Both strategies follow the same interface.
+
+---
+
+## 3. Strategy Pattern
+
+The **Strategy Pattern** allows selecting an algorithm at runtime.
+
+Instead of hardcoding logic, the algorithm is injected dynamically.
+
+Example:
+
+```
+PalindromeService service = new PalindromeService(strategy);
+```
+
+The service executes the chosen strategy.
+
+---
+
+# Implemented Strategies
+
+### 1. Stack Strategy
+
+Uses a **Stack (LIFO)** to reverse characters.
+
+Steps:
+
+1. Push characters into stack
+2. Pop characters
+3. Compare with original sequence
+
+---
+
+### 2. Deque Strategy
+
+Uses a **Deque** to compare front and rear characters.
+
+Steps:
+
+1. Insert characters into deque
+2. Remove first and last
+3. Compare values
 
 ---
 
 # Program Flow
 
-1. Create a **PalindromeChecker class**.
-2. Implement the **checkPalindrome() method**.
-3. Compare characters from the start and end of the string.
-4. Return **true** if the string is a palindrome.
-5. In the main class, create an object of the checker class.
-6. Call the method and display the result.
+1. Define **PalindromeStrategy interface**.
+2. Implement algorithm classes:
+
+    * StackStrategy
+    * DequeStrategy
+3. Create **PalindromeService class** that accepts a strategy.
+4. Inject the desired strategy at runtime.
+5. Execute palindrome validation.
 
 ---
 
@@ -73,13 +104,13 @@ The method is then called using the object.
 ### Compile
 
 ```
-javac UseCase11PalindromeCheckerApp.java
+javac UseCase12PalindromeCheckerApp.java
 ```
 
 ### Run
 
 ```
-java UseCase11PalindromeCheckerApp
+java UseCase12PalindromeCheckerApp
 ```
 
 ---
@@ -87,7 +118,7 @@ java UseCase11PalindromeCheckerApp
 # Example Output
 
 ```
-Input : radar
+Input : level
 Is Palindrome? : true
 ```
 
@@ -100,9 +131,12 @@ Is Palindrome? : false
 
 ---
 
-# Data Structure Used
+# Data Structures Used
 
-Internal (String / Array comparison)
+Depending on strategy:
+
+* **Stack**
+* **Deque**
 
 ---
 
@@ -110,10 +144,11 @@ Internal (String / Array comparison)
 
 After completing this program you will understand:
 
-* **Encapsulation in Java**
-* **Class and Object design**
-* **Single Responsibility Principle**
-* How to separate **logic and application code**
+* **Interfaces in Java**
+* **Polymorphism**
+* **Strategy Design Pattern**
+* How to **switch algorithms dynamically**
+* Advanced object-oriented design principles
 
 ---
 
@@ -121,4 +156,4 @@ After completing this program you will understand:
 
 Developer
 
-Version: 11.0
+Version: 12.0
