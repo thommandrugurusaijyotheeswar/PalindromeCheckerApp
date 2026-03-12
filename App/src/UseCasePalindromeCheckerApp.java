@@ -1,48 +1,55 @@
-import java.util.Scanner;
-
 /**
  * ==========================================================
- * MAIN CLASS - UseCase10PalindromeCheckerApp
+ * MAIN CLASS - UseCase11PalindromeCheckerApp
  * ==========================================================
  *
- * Use Case 10: Case-Insensitive & Space-Ignored Palindrome
+ * Use Case 11: Object-Oriented Palindrome Service
  *
  * Description:
- * This program checks whether a string is a palindrome
- * while ignoring spaces and letter case differences.
- * The input string is normalized before performing
- * the palindrome validation.
+ * This program demonstrates Object-Oriented design by
+ * encapsulating palindrome checking logic inside a
+ * separate class called PalindromeChecker.
+ *
+ * The application creates an object of the service
+ * class and calls the checkPalindrome() method.
  *
  * @author Developer
- * @version 10.0
+ * @version 11.0
  */
+
+class PalindromeChecker {
+
+    // Method to check palindrome
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
 
 public class UseCasePalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        String input = "radar";
 
-        // Take input from user
-        System.out.print("Enter a string: ");
-        String input = scanner.nextLine();
+        // Create object of PalindromeChecker
+        PalindromeChecker checker = new PalindromeChecker();
 
-        // Normalize string (remove spaces and convert to lowercase)
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        // Call palindrome method
+        boolean result = checker.checkPalindrome(input);
 
-        // Reverse the normalized string
-        String reversed = "";
-        for (int i = normalized.length() - 1; i >= 0; i--) {
-            reversed = reversed + normalized.charAt(i);
-        }
-
-        // Check palindrome
-        if (normalized.equals(reversed)) {
-            System.out.println("Result: The string is a Palindrome.");
-        } else {
-            System.out.println("Result: The string is NOT a Palindrome.");
-        }
-
-        scanner.close();
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + result);
     }
 }
