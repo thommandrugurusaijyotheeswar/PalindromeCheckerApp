@@ -1,60 +1,91 @@
-import java.util.Deque;
-import java.util.LinkedList;
-
 /**
  * ==========================================================
- * MAIN CLASS - UseCase7PalindromeCheckerApp
+ * MAIN CLASS - UseCase8PalindromeCheckerApp
  * ==========================================================
  *
- * Use Case 7: Deque-Based Optimized Palindrome Checker
+ * Use Case 8: Linked List Based Palindrome Checker
  *
  * Description:
- * This class validates a palindrome using a Deque
- * (Double Ended Queue) data structure. The deque allows
- * insertion and deletion from both front and rear.
- *
- * The application:
- * - Inserts characters into a deque
- * - Removes first and last characters
- * - Compares them until the deque becomes empty
- * - Displays the result
+ * This program checks whether a string is a palindrome
+ * using a Singly Linked List. It finds the middle of the
+ * list using fast and slow pointers, reverses the second
+ * half, and compares both halves.
  *
  * @author Developer
- * @version 7.0
+ * @version 8.0
  */
 
 public class UseCasePalindromeCheckerApp {
 
+    // Node class for singly linked list
+    static class Node {
+        char data;
+        Node next;
+
+        Node(char data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    // Method to check palindrome
+    public static boolean isPalindrome(Node head) {
+
+        if (head == null || head.next == null)
+            return true;
+
+        Node slow = head;
+        Node fast = head;
+
+        // Find middle using fast and slow pointer
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Reverse second half
+        Node prev = null;
+        Node curr = slow;
+
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        // Compare both halves
+        Node first = head;
+        Node second = prev;
+
+        while (second != null) {
+            if (first.data != second.data)
+                return false;
+
+            first = first.next;
+            second = second.next;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
 
-        // Define the input string
-        String input = "level";
+        String input = "madam";
 
-        // Create a Deque
-        Deque<Character> deque = new LinkedList<>();
+        // Convert string into linked list
+        Node head = new Node(input.charAt(0));
+        Node current = head;
 
-        // Insert each character into the deque
-        for (char c : input.toCharArray()) {
-            deque.addLast(c);
+        for (int i = 1; i < input.length(); i++) {
+            current.next = new Node(input.charAt(i));
+            current = current.next;
         }
 
-        // Assume palindrome initially
-        boolean isPalindrome = true;
+        // Check palindrome
+        boolean result = isPalindrome(head);
 
-        // Compare characters from front and rear
-        while (deque.size() > 1) {
-
-            char front = deque.removeFirst();
-            char rear = deque.removeLast();
-
-            if (front != rear) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // Display result
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Is Palindrome? : " + result);
     }
 }
