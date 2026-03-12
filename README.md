@@ -1,14 +1,14 @@
-# UC8 – Linked List Based Palindrome Checker
+# UC9 – Recursive Palindrome Checker
 
 ## Objective
 
-The objective of this program is to check whether a given string is a **palindrome** using a **Singly Linked List** data structure.
+The objective of this program is to check whether a given string is a **palindrome** using **recursion**.
 
 A palindrome is a word or sequence that reads the same forward and backward.
 
 Examples:
 
-* madam
+* racecar
 * level
 * radar
 
@@ -16,69 +16,60 @@ Examples:
 
 # Key Concepts Used
 
-## 1. Singly Linked List
+## 1. Recursion
 
-A **Singly Linked List** is a dynamic data structure where each element (node) contains:
-
-* Data
-* Reference to the next node
+Recursion is a programming technique where a **function calls itself** to solve smaller parts of a problem.
 
 Example structure:
 
 ```
-m → a → d → a → m → null
+isPalindrome(str, start, end)
 ```
+
+Each recursive call reduces the problem size by moving the start forward and the end backward.
 
 ---
 
-## 2. Node Traversal
+## 2. Base Condition
 
-Nodes are accessed sequentially using the `next` reference.
-
-Example traversal:
-
-```
-current = head
-while(current != null)
-```
-
----
-
-## 3. Fast and Slow Pointer Technique
-
-Two pointers are used to find the middle of the linked list.
-
-* **Slow pointer** moves one step
-* **Fast pointer** moves two steps
-
-This helps identify the midpoint efficiently.
-
----
-
-## 4. In-Place Reversal
-
-The second half of the linked list is reversed without creating extra memory structures.
+The base condition stops the recursion and prevents infinite calls.
 
 Example:
 
 ```
-Original second half:
-a → m
-
-Reversed:
-m → a
+if(start >= end)
+return true;
 ```
+
+When the pointers cross or meet, the string is confirmed as a palindrome.
+
+---
+
+## 3. Call Stack
+
+The **Call Stack** stores function calls during recursion.
+
+Example execution:
+
+```
+isPalindrome("racecar",0,6)
+isPalindrome("racecar",1,5)
+isPalindrome("racecar",2,4)
+isPalindrome("racecar",3,3)
+```
+
+When the base condition is reached, the function returns back through the call stack.
 
 ---
 
 # Program Flow
 
-1. Convert the input string into a **linked list**.
-2. Use **fast and slow pointers** to find the middle.
-3. Reverse the **second half of the linked list**.
-4. Compare the first half and reversed second half.
-5. If all characters match → **Palindrome**
-6. Otherwise → **Not Palindrome**
+1. Define the input string.
+2. Call the recursive function with start and end indices.
+3. Compare characters at both ends.
+4. If characters match, call the function recursively.
+5. Stop recursion when the base condition is reached.
+6. Print whether the string is a palindrome.
 
 ---
 
@@ -87,13 +78,13 @@ m → a
 ### Compile
 
 ```
-javac UseCase8PalindromeCheckerApp.java
+javac UseCase9PalindromeCheckerApp.java
 ```
 
 ### Run
 
 ```
-java UseCase8PalindromeCheckerApp
+java UseCase9PalindromeCheckerApp
 ```
 
 ---
@@ -101,9 +92,11 @@ java UseCase8PalindromeCheckerApp
 # Example Output
 
 ```
-Input : madam
+Input : racecar
 Is Palindrome? : true
 ```
+
+Example (Not Palindrome)
 
 ```
 Input : hello
@@ -114,7 +107,7 @@ Is Palindrome? : false
 
 # Data Structure Used
 
-Singly Linked List
+Call Stack
 
 ---
 
@@ -122,11 +115,10 @@ Singly Linked List
 
 After completing this program you will understand:
 
-* How **Linked Lists** work
-* Node creation and traversal
-* **Fast and slow pointer technique**
-* **In-place reversal algorithm**
-* Linked list based palindrome validation
+* How **recursion works**
+* Importance of **base condition**
+* How the **call stack manages recursive calls**
+* How recursion can solve palindrome problems efficiently
 
 ---
 
@@ -134,4 +126,4 @@ After completing this program you will understand:
 
 Developer
 
-Version: 8.0
+Version: 9.0
