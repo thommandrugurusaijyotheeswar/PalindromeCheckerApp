@@ -1,85 +1,70 @@
-# UC10 – Case-Insensitive & Space-Ignored Palindrome Checker
+# UC11 – Object-Oriented Palindrome Service
 
 ## Objective
 
-The objective of this program is to check whether a string is a **palindrome while ignoring spaces and letter case differences**.
+The objective of this program is to check whether a string is a **palindrome using Object-Oriented Programming (OOP) principles**.
 
-This allows phrases such as:
-
-* "Never Odd Or Even"
-* "A man a plan a canal Panama"
-
-to be detected as palindromes.
+The palindrome logic is encapsulated inside a **PalindromeChecker class**, improving modularity and code reuse.
 
 ---
 
 # Key Concepts Used
 
-## 1. String Preprocessing
+## 1. Encapsulation
 
-Before checking the palindrome condition, the string is **normalized** by:
+Encapsulation means **wrapping data and methods inside a class**.
 
-* Removing spaces
-* Converting all letters to lowercase
-
-Example:
+In this program:
 
 ```
-Original Input:
-Never Odd Or Even
+PalindromeChecker class
+```
 
-Normalized String:
-neveroddoreven
+contains the palindrome checking logic inside the method:
+
+```
+checkPalindrome()
 ```
 
 ---
 
-## 2. Regular Expressions
+## 2. Single Responsibility Principle
 
-Regular expressions are used to remove spaces from the string.
+Each class should have **only one responsibility**.
 
-Example:
+In this program:
 
-```
-input.replaceAll("\\s+", "")
-```
+| Class                         | Responsibility         |
+| ----------------------------- | ---------------------- |
+| PalindromeChecker             | Check palindrome logic |
+| UseCase11PalindromeCheckerApp | Run the application    |
 
-Explanation:
-
-* `\\s+` → matches one or more whitespace characters
-* `replaceAll()` removes them from the string
+This improves **code organization and maintainability**.
 
 ---
 
-## 3. Case Normalization
+## 3. Object Creation
 
-To avoid case mismatch, the string is converted to lowercase.
+An object of the PalindromeChecker class is created in the main method.
 
 Example:
 
 ```
-input.toLowerCase()
+PalindromeChecker checker = new PalindromeChecker();
 ```
 
-This ensures:
-
-```
-"Madam" == "madam"
-```
+The method is then called using the object.
 
 ---
 
 # Program Flow
 
-1. Read the input string from the user.
-2. Normalize the string:
-
-    * Remove spaces using regular expressions
-    * Convert all letters to lowercase.
-3. Reverse the normalized string.
-4. Compare the normalized string with the reversed string.
-5. If both match → **Palindrome**
-6. Otherwise → **Not Palindrome**
+1. Create a **PalindromeChecker class**.
+2. Implement the **checkPalindrome() method**.
+3. Compare characters from the start and end of the string.
+4. Return **true** if the string is a palindrome.
+5. In the main class, create an object of the checker class.
+6. Call the method and display the result.
 
 ---
 
@@ -88,38 +73,36 @@ This ensures:
 ### Compile
 
 ```
-javac UseCase10PalindromeCheckerApp.java
+javac UseCase11PalindromeCheckerApp.java
 ```
 
 ### Run
 
 ```
-java UseCase10PalindromeCheckerApp
+java UseCase11PalindromeCheckerApp
 ```
 
 ---
 
 # Example Output
 
-Example 1:
-
 ```
-Enter a string: Never Odd Or Even
-Result: The string is a Palindrome.
+Input : radar
+Is Palindrome? : true
 ```
 
-Example 2:
+Example (Not Palindrome)
 
 ```
-Enter a string: Hello World
-Result: The string is NOT a Palindrome.
+Input : hello
+Is Palindrome? : false
 ```
 
 ---
 
 # Data Structure Used
 
-String / Array
+Internal (String / Array comparison)
 
 ---
 
@@ -127,10 +110,10 @@ String / Array
 
 After completing this program you will understand:
 
-* **String preprocessing techniques**
-* Use of **regular expressions**
-* Case-insensitive comparisons
-* How to improve palindrome validation logic
+* **Encapsulation in Java**
+* **Class and Object design**
+* **Single Responsibility Principle**
+* How to separate **logic and application code**
 
 ---
 
@@ -138,4 +121,4 @@ After completing this program you will understand:
 
 Developer
 
-Version: 10.0
+Version: 11.0
