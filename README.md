@@ -1,113 +1,109 @@
-# UC7 – Deque-Based Optimized Palindrome Checker
+# UC8 – Linked List Based Palindrome Checker
 
-## 📌 Objective
+## Objective
 
-The objective of this program is to check whether a given string is a **palindrome** using a **Deque (Double Ended Queue)** data structure.
+The objective of this program is to check whether a given string is a **palindrome** using a **Singly Linked List** data structure.
 
-A **palindrome** is a word or sequence that reads the same forward and backward.
+A palindrome is a word or sequence that reads the same forward and backward.
 
 Examples:
 
+* madam
 * level
 * radar
-* civic
-
-This use case demonstrates how a **Deque allows insertion and deletion from both front and rear**, making palindrome comparison efficient.
 
 ---
 
-# 🧠 Key Concepts Used
+# Key Concepts Used
 
-## 1. Deque (Double Ended Queue)
+## 1. Singly Linked List
 
-A **Deque** is a linear data structure that allows insertion and deletion from **both ends**.
+A **Singly Linked List** is a dynamic data structure where each element (node) contains:
 
-Operations supported:
+* Data
+* Reference to the next node
 
-* Insert at **front**
-* Insert at **rear**
-* Remove from **front**
-* Remove from **rear**
+Example structure:
+
+```
+m → a → d → a → m → null
+```
+
+---
+
+## 2. Node Traversal
+
+Nodes are accessed sequentially using the `next` reference.
+
+Example traversal:
+
+```
+current = head
+while(current != null)
+```
+
+---
+
+## 3. Fast and Slow Pointer Technique
+
+Two pointers are used to find the middle of the linked list.
+
+* **Slow pointer** moves one step
+* **Fast pointer** moves two steps
+
+This helps identify the midpoint efficiently.
+
+---
+
+## 4. In-Place Reversal
+
+The second half of the linked list is reversed without creating extra memory structures.
 
 Example:
 
 ```
-Input: level
+Original second half:
+a → m
 
-Deque:
-Front → l → e → v → e → l ← Rear
+Reversed:
+m → a
 ```
 
 ---
 
-## 2. Front and Rear Access
+# Program Flow
 
-Deque allows direct access to:
+1. Convert the input string into a **linked list**.
+2. Use **fast and slow pointers** to find the middle.
+3. Reverse the **second half of the linked list**.
+4. Compare the first half and reversed second half.
+5. If all characters match → **Palindrome**
+6. Otherwise → **Not Palindrome**
 
-* **First element**
-* **Last element**
+---
 
-These elements are compared to check palindrome condition.
+# Compilation and Execution
 
-Example:
+### Compile
 
 ```
-Compare:
-First = l
-Last  = l
+javac UseCase8PalindromeCheckerApp.java
+```
+
+### Run
+
+```
+java UseCase8PalindromeCheckerApp
 ```
 
 ---
 
-## 3. Optimized Data Handling
-
-Unlike stack-based approaches, **Deque eliminates the need for separate reversal data structures** because both ends can be accessed directly.
-
-This makes the algorithm **simpler and efficient**.
-
----
-
-# ⚙️ Program Flow
-
-1. Declare and initialize the input string.
-2. Create a **Deque** to store characters.
-3. Insert all characters of the string into the deque.
-4. Remove the **first and last characters**.
-5. Compare both characters.
-6. If characters match, continue comparison.
-7. If characters do not match, the string is **not a palindrome**.
-8. Display the final result.
-
----
-
-# 💻 Compilation and Execution
-
-### Step 1: Compile the Program
-
-Open **Command Prompt** and run:
+# Example Output
 
 ```
-javac UseCase7PalindromeCheckerApp.java
-```
-
-### Step 2: Run the Program
-
-```
-java UseCase7PalindromeCheckerApp
-```
-
----
-
-# ▶️ Example Output
-
-Example 1:
-
-```
-Input : level
+Input : madam
 Is Palindrome? : true
 ```
-
-Example 2:
 
 ```
 Input : hello
@@ -116,28 +112,26 @@ Is Palindrome? : false
 
 ---
 
-# 📂 File Structure
+# Data Structure Used
 
-```
-UseCase7PalindromeCheckerApp.java
-README.md
-```
+Singly Linked List
 
 ---
 
-# 📚 Learning Outcome
+# Learning Outcome
 
-After completing this program, you will understand:
+After completing this program you will understand:
 
-* How **Deque (Double Ended Queue)** works
-* How to access **front and rear elements**
-* Efficient **palindrome validation**
-* How data structures optimize algorithm design
+* How **Linked Lists** work
+* Node creation and traversal
+* **Fast and slow pointer technique**
+* **In-place reversal algorithm**
+* Linked list based palindrome validation
 
 ---
 
-# 👨‍💻 Author
+# Author
 
 Developer
 
-Version: 7.0
+Version: 8.0
