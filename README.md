@@ -1,101 +1,79 @@
-# UC12 – Strategy Pattern for Palindrome Algorithms
+# UC13 – Performance Comparison of Palindrome Algorithms
 
 ## Objective
 
-The objective of this program is to implement palindrome validation using the **Strategy Design Pattern**, allowing different palindrome algorithms to be selected dynamically at runtime.
+The objective of this program is to compare the **performance of different palindrome checking algorithms** by measuring their execution time.
 
-This improves **flexibility, maintainability, and scalability** of the application.
+This helps analyze which algorithm performs better under similar conditions.
 
 ---
 
 # Key Concepts Used
 
-## 1. Interface
+## 1. System.nanoTime()
 
-An **interface** defines a contract that multiple classes can implement.
-
-Example:
-
-```
-interface PalindromeStrategy
-```
-
-All palindrome algorithms implement this interface.
-
----
-
-## 2. Polymorphism
-
-Polymorphism allows different classes to be treated as the same type.
+`System.nanoTime()` is used to measure **execution time in nanoseconds**.
 
 Example:
 
 ```
-PalindromeStrategy strategy = new StackStrategy();
+long start = System.nanoTime();
+long end = System.nanoTime();
 ```
 
-or
+Execution time:
 
 ```
-PalindromeStrategy strategy = new DequeStrategy();
+end - start
 ```
-
-Both strategies follow the same interface.
 
 ---
 
-## 3. Strategy Pattern
+# Algorithms Compared
 
-The **Strategy Pattern** allows selecting an algorithm at runtime.
+## 1. Simple String Reverse Method
 
-Instead of hardcoding logic, the algorithm is injected dynamically.
+The string is reversed and compared with the original string.
 
-Example:
+Steps:
 
-```
-PalindromeService service = new PalindromeService(strategy);
-```
-
-The service executes the chosen strategy.
+1. Reverse the string using a loop
+2. Compare original and reversed strings
 
 ---
 
-# Implemented Strategies
+## 2. Stack Based Method
 
-### 1. Stack Strategy
-
-Uses a **Stack (LIFO)** to reverse characters.
+Uses a **Stack (LIFO)** to reverse the order of characters.
 
 Steps:
 
 1. Push characters into stack
 2. Pop characters
-3. Compare with original sequence
+3. Compare with original string
 
 ---
 
-### 2. Deque Strategy
+## 3. Deque Based Method
 
-Uses a **Deque** to compare front and rear characters.
+Uses **Deque (Double Ended Queue)** to compare front and rear characters.
 
 Steps:
 
 1. Insert characters into deque
 2. Remove first and last
-3. Compare values
+3. Compare both values
 
 ---
 
 # Program Flow
 
-1. Define **PalindromeStrategy interface**.
-2. Implement algorithm classes:
-
-    * StackStrategy
-    * DequeStrategy
-3. Create **PalindromeService class** that accepts a strategy.
-4. Inject the desired strategy at runtime.
-5. Execute palindrome validation.
+1. Define an input string.
+2. Run each palindrome algorithm.
+3. Capture execution start time using `System.nanoTime()`.
+4. Capture execution end time.
+5. Calculate execution time.
+6. Display results for each algorithm.
 
 ---
 
@@ -104,13 +82,13 @@ Steps:
 ### Compile
 
 ```
-javac UseCase12PalindromeCheckerApp.java
+javac UseCase13PalindromeCheckerApp.java
 ```
 
 ### Run
 
 ```
-java UseCase12PalindromeCheckerApp
+java UseCase13PalindromeCheckerApp
 ```
 
 ---
@@ -118,25 +96,20 @@ java UseCase12PalindromeCheckerApp
 # Example Output
 
 ```
-Input : level
-Is Palindrome? : true
+Input : racecar
+
+Simple String Method:
+Result : true
+Execution Time : 8200 ns
+
+Stack Method:
+Result : true
+Execution Time : 12000 ns
+
+Deque Method:
+Result : true
+Execution Time : 9000 ns
 ```
-
-Example (Not Palindrome)
-
-```
-Input : hello
-Is Palindrome? : false
-```
-
----
-
-# Data Structures Used
-
-Depending on strategy:
-
-* **Stack**
-* **Deque**
 
 ---
 
@@ -144,11 +117,10 @@ Depending on strategy:
 
 After completing this program you will understand:
 
-* **Interfaces in Java**
-* **Polymorphism**
-* **Strategy Design Pattern**
-* How to **switch algorithms dynamically**
-* Advanced object-oriented design principles
+* How to **measure execution time in Java**
+* How to **compare algorithm performance**
+* Differences between **Stack and Deque approaches**
+* Practical use of **System.nanoTime()**
 
 ---
 
@@ -156,4 +128,4 @@ After completing this program you will understand:
 
 Developer
 
-Version: 12.0
+Version: 13.0
